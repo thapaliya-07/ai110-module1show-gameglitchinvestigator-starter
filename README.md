@@ -25,19 +25,36 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+**What bugs did you find?**
+- Hints were backwards due to secret number being converted to a string
+  on even attempts, causing text comparison instead of number comparison.
+- Score rewarded wrong guesses with +5 points on even attempts.
+- Hard difficulty had range 1–50, making it easier than Normal (1–100).
+
+**How did you fix them?**
+- Removed the string conversion so secret is always compared as an integer.
+- Simplified update_score so wrong guesses always deduct 5 points.
+- Changed Hard difficulty range to 1–200.
+- Moved all logic functions into logic_utils.py and imported them in app.py.
+
+**What did you learn?**
+- AI-generated code can have subtle bugs that only show up when you
+  actually play/test the app.
+- Separating logic from UI code makes bugs easier to find and fix.
+- Automated tests give you confidence that fixes actually work.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. User selects difficulty "Normal" (range 1–100)
+2. User enters a guess of 40 → Game returns "Go HIGHER" (too low)
+3. User enters a guess of 70 → Game returns "Go LOWER" (too high)
+4. User enters a guess of 55 → Game returns "Go LOWER" (too high)
+5. User enters a guess of 48 → Game returns "Go HIGHER" (too low)
+6. User enters a guess of 52 → "Correct!" — game ends
+7. Score updates based on number of attempts taken
+8. User clicks "New Game" to play again
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 

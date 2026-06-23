@@ -35,7 +35,20 @@ Document at least 3 bugs you found. Add rows as needed.
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
----
+**Correct AI suggestion:**
+I asked the AI to explain why the hints were backwards. It correctly
+identified that the secret number was being converted to a string on
+even-numbered attempts, causing text comparison instead of number
+comparison. I verified this by reading the buggy code in app.py and
+confirming the `str()` conversion was there. The fix worked — hints
+are now correct.
+
+**Incorrect/misleading AI suggestion:**
+The AI initially suggested keeping all the logic inside app.py instead
+of moving it to logic_utils.py. This was misleading because the project
+requires separation of logic and UI code. I rejected this and instead
+moved all four functions into logic_utils.py manually, then imported
+them into app.py.
 
 ## 3. Debugging and testing your fixes
 
@@ -44,7 +57,17 @@ Document at least 3 bugs you found. Add rows as needed.
   and what it showed you about your code.
 - Did AI help you design or understand any tests? How?
 
----
+I verified my fixes in two ways:
+
+1. **Manual testing** — I ran the game with `python3 -m streamlit run
+app.py` and tested guesses above and below the secret number. The hints
+now correctly say "Go LOWER" when guessing too high and "Go HIGHER"
+when guessing too low.
+
+2. **Automated testing** — I wrote four pytest cases in
+`tests/test_game_logic.py` covering too high, too low, correct guess,
+and score deduction. All 4 tests passed when running `python3 -m pytest
+tests/`.
 
 ## 4. What did you learn about Streamlit and state?
 
