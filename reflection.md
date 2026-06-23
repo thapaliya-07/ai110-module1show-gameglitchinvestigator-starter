@@ -7,6 +7,16 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - What did the game look like the first time you ran it?
 - List at least two concrete bugs you noticed at the start  
   (for example: "the hints were backwards").
+  When I first ran the game, I noticed three bugs:
+
+1. **Hints were backwards** — I guessed 100 when the secret was 3, and the game told me to go even higher instead of lower.
+
+2. **Score rewarded wrong guesses** — On certain attempts, 
+   guessing incorrectly actually added +5 points to my score 
+   instead of penalizing me.
+
+3. **Hard difficulty is easier than Normal** — Hard mode only 
+   uses range 1–50, which is a smaller range than Normal (1–100), making it accidentally easier.
 
 **Bug Reproduction Log**
 
@@ -14,10 +24,9 @@ Document at least 3 bugs you found. Add rows as needed.
 
 | Input | Expected Behavior | Actual Behavior | Console Output / Error |
 |-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
-| | | | |
-
+| Guess of 100, secret was 3 | "Too High / Go Lower" hint | "Go HIGHER!" shown | none |
+| Any wrong guess on even-numbered attempt | Score stays same or drops | Score increases by +5 | none |
+| Switching difficulty to Hard | Harder/wider number range | Range 1–50 (narrower than Normal) | none
 ---
 
 ## 2. How did you use AI as a teammate?
